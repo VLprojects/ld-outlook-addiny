@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>livedigital Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+   <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui. -->
+    <!-- <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/> -->
+
+    <!-- MY ED -->
+    <link rel="shortcut icon" href="../../assets/favicon-calendar.ico" type="image/x-icon">
+
+
+      <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+      <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+      <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+            
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-l ms-landing-page">
+ 
+
+  <main class="u-set u-login ms-landing-page__main">
+    <div class="u-row">
+      <div class=" col s12">
+        <h5>Вы не авторизованы, предоставьте “Персональный токен“ или воспользуйтесь инструкцией по ссылке ниже для создания токена.</h5>
+      </div>
+    </div>
+    <div class="u-row"> </div>
+
+    <div class="u-row">
+      <div class="ms-TextField ms-TextField--underlined">
+        <input id="token-input" class="ms-TextField-field   col s12" type="text" value="" placeholder="API ключ">
+      </div>
+    </div>
+
+    <div class="u-row">
+      <div class="input-field col s12">
+        <button id="save-token-btn" class="ms-Button  "> <span class="ms-Button-label">Сохранить</span></button>
+      </div>
+    </div>
+
+    <div class="u-row">
+      <h5> <a id="ref-1-link" href="https://help.livedigital.space/article/14460" target="_blank">Инструкция</a></h5>
+    </div>
+    <div class="u-row">
+      <h5> <a id="ref-2-link" href="https://livedigital.space/privacy" target="_blank">Политика обработки персональных данных</a></h5>
+    </div>
+  </main>
+
+
+  <main class="u-set u-loged ms-landing-page__main ">
+
+    <div class="u-row">
+      <div class=" col s12">
+        <div> <a id="user-info-mail" href="#">Not logged</a><button id="logout-token-btn" class="ms-Button  ">
+                                                              <span class="ms-Button-label">Выйти</span>
+                                                            </button>
+        </div>
+      </div>
+    </div>
+    <div class="u-row"> </div>
+
+    <div class="u-row">
+      <button id="create-in-new-room-btn" class="ms-Button ms-Button--compound u-width">
+        <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span> 
+        <span class="ms-Button-label">Встреча в новой комнате</span> 
+        <span class="ms-Button-description">Встреча будет создана в новой комнате</span> 
+      </button>
+    </div>
+
+    <div class="u-row">
+      <div class="input-field col s12">
+        <button id="create-in-recent-room-btn" class="ms-Button ms-Button--compound u-width">
+          <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span> 
+          <span class="ms-Button-label">Встреча в предыдущей комнате</span> 
+          <span class="ms-Button-description">Выбрать комнату для проведения встречи</span> 
+        </button>
+      </div>
+    </div>
+
+    <div id="custom-room-block" class="closed">
+      <div class="u-row">
+          <label for="spaces-select">Группы:</label>
+      </div>
+      <div class="u-row">
+        <select id="spaces-select" class="">
+        </select>
+      </div>
+
+      <div class="u-row">
+        <label for="rooms-select">Комнаты:</label>
+      </div>
+      <div class="u-row">
+          <select id="rooms-select" class="">
+          </select>
+      </div>
+      <div class="u-row">
+        <div class="input-field col s12">
+          <button id="choose-in-recent-room-btn" class="ms-Button ">
+            <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+            <span class="ms-Button-label">Выбрать </span>
+            
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div id="ref-1-block" class="ref-block">
+    <!-- <button id="">Назад</button> -->
+        <button id="ref-1-close-btn" class="ref-close-btn ms-Button ">
+          <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--Navigate-Back"></i></span>
+          <span class="ms-Button-label">Назад</span>
+        </button>
+
+    <iframe id="ref-1-iframe" 
+    src="https://help.livedigital.space/article/14460"
+    class="ref-iframe"
+    >
+    </iframe>
+
+  </div>
+
+  <div id="ref-2-block" class="ref-block">
+    <button id="ref-2-close-btn" class="ref-close-btn ms-Button ">
+      <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--Navigate-Back"></i></span>
+      <span class="ms-Button-label">Назад</span>
+    </button>
+  
+    <iframe id="ref-2-iframe" 
+      class="ref-iframe"
+      src="https://livedigital.space/privacy"
+      sandbox="allow-same-origin"
+    >
+    </iframe>
+  
+  </div>
+  
+  
+
+
+  <header class="ms-landing-page__footer ">
+    <div class="ms-landing-page__footer--left">
+      <img src="../../assets/ld-logo.png" />
+      <!-- <h1 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-white"> Integration Addin </h1> -->
+    </div>
+    <!-- <div id="settings-icon" class="ms-landing-page__footer--right" aria-label="Settings" tabindex=0>
+      <i class="ms-Icon enlarge ms-Icon--Settings ms-fontColor-white"></i>
+    </div> -->
+  </header>   
+
+  <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../../node_modules/showdown/dist/showdown.min.js"></script>
+  <script type="text/javascript" src="../../node_modules/urijs/src/URI.min.js"></script>
+
+  <!-- <script type="text/javascript" src="taskpane.js"></script> -->
+
+  <script type="text/javascript">
+
+
+  </script>  
+</body>
+
+</html>
