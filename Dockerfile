@@ -7,4 +7,4 @@ RUN npm install && npm run build
 
 FROM nginx
 RUN rm -rf /usr/share/nginx/html/*
-COPY --from=build /usr/src/app/dist/* /usr/share/nginx/html/
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html
