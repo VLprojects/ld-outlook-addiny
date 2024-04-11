@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://ms.livedigital.space/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://ld-outlook-addin.onrender.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
@@ -66,7 +66,10 @@ module.exports = async (env, options) => {
             from: "./src/taskpane/taskpane.css",
             to: "taskpane.css",
           },
-
+          {
+            from: "./src/index.html",
+            to: "index.html",
+          },          
           {
             from: "assets/*",
             to: "assets/[name][ext][query]",

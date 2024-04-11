@@ -1,13 +1,17 @@
-Необходимо: 
+Необходимо:
 
-1 - создать на вашем хостинге livedigital.space поддомен (например ms.livedigital.space) и прописать его в 
-webpack.config.js
-const urlProd = "https://ld-outlook-addin.onrender.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+1. Создать на вашем хостинге livedigital.space поддомен (например ms.livedigital.space)
 
-2 - Использовать для прода команды
+2. Добавить разрешения cors для созданного поддомена в сервисе АПИ https://moodhood-api.livedigital.space/v1/
 
-nmp install
+3. Прописать поддомен в webpack.config.js
 
-nmp run build
+   const urlProd = "https:// YOURSUBDOMAIN.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
-3 - загрузить на хостинг (в корень поддомена) папку dist
+4. Использовать для прода команды ( версия node.js min 18)
+
+   nmp install
+
+   nmp run build
+
+5. Загрузить в корень поддомена содержимое папки dist
